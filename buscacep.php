@@ -17,15 +17,8 @@ $rj = 'RJ';
 $localidade = urlencode('Nova Friburgo');
 
 $url = "https://buscacepinter.correios.com.br/app/logradouro_bairro/carrega-logradouro-bairro.php?letraLocalidade=&letraBairro=&cepaux=&pagina=%2Fapp%2Flogradouro_bairro%2Findex.php&mensagem_alerta=&uf=$rj&localidade=$localidade&bairro=$bairro&inicio=1&final=$maximo";
-
  
-$ch = curl_init();
-
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-$output = curl_exec($ch);
-curl_close($ch);  
-
+$output = file_get_contents($url);
 
 $json = json_decode($output);
 
